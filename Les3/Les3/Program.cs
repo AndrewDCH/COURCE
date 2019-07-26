@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
+    enum sort
+    {
+        increase, decrease
+    };
     class Program
     {
         static void Main(string[] args)
@@ -18,7 +22,7 @@ namespace Task1
             {
                 arr[i] = rnd.Next(0, 20);
             }
-            arr = BubleSort(arr);
+            arr = BubleSort(arr, "increase");
             SortDetection(arr);
             Console.ReadKey();
 
@@ -31,17 +35,15 @@ namespace Task1
             }
             Console.WriteLine();
         }
-        public static int[] BubleSort(int[] arr)
+        public static int[] BubleSort(int[] arr,  sort a )
         {
-            int ind;
-            Console.WriteLine("Enter 1 if you want ascending sort or enter 2 if you want descenting sort");
-            ind = Convert.ToInt32(Console.ReadLine());
+          
 
             for (int i = 0; i < arr.Length; i++)
             {
                 for (int j = 0; j < arr.Length - i - 1; j++)
                 {
-                    if (ind == 1)
+                    if (a=="increace")
                     {
                         if (arr[j] > arr[j + 1])
                         {
@@ -51,7 +53,7 @@ namespace Task1
 
                         }
                     }
-                    if (ind == 2)
+                    if (a="decrease")
                     {
                         if (arr[j] < arr[j + 1])
                         {
@@ -66,14 +68,13 @@ namespace Task1
             }
             return arr;
         }
-        public static void SortDetection(int[] arr)
+        public static void SortDetection(int[] arr, sort a )
         {
-            Console.WriteLine("Array should be sorted as ascend or descend array(Enter 1-ascend array, 2-descend array)");
-            int ind = Convert.ToInt32(Console.ReadLine());
+            
             int res = 0;
             for (int i = 0; i < arr.Length - 1; i++)
             {
-                if (ind == 1)
+                if (a=="increase")
                 {
                     if (arr[i] > arr[i + 1])
                     {
@@ -85,7 +86,7 @@ namespace Task1
                         break;
                     }
                 }
-                if (ind == 2)
+                if (a=="decrease")
                 {
                     if (arr[i] < arr[i + 1])
                     {
